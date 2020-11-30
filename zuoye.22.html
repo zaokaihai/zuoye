@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度一下，你就知道</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        text-align: center;
+    }
+    .top {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+    }
+    #left {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        height: 60px;
+        padding-left: 24px;
+    }
+    #right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 100;
+        height: 60px;
+        padding-right: 24px;
+    }
+    .main {
+        height: 60%;
+        min-height: 185px;
+        max-height: 310px;
+        position: relative;
+        z-index: 0;
+        text-align: center;
+    }
+    a.l,a.r {
+        margin-right: 31px;
+        margin-top: 19px;
+        display: inline-block;
+        position: relative;
+        color: #222;
+        font:13px/23px Arial,sans-serif;
+        text-decoration:none
+    }
+    a.d {
+        overflow: hidden;
+        font-family: inherit;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        outline: 0;
+        border: 0;
+        border-radius: 6px;
+        padding: 0;
+        cursor: pointer;
+        height: 24px;
+        width: 48px;
+        line-height: 24px;color: #fff !important;
+        background-color: #4e71f2;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 0px;
+        margin-left: 1px;
+        font-size: 13px;
+    }
+    a:link,a:visited {
+        text-decoration: none;
+        color: black;
+    }
+    a:hover {
+        color: #315efb;  
+    }  
+    .img-list {
+        margin-top: 23px;
+        margin-left: -17px;
+    }
+    .search {
+        height: 16px;
+        padding: 12px 16px;
+        font-size: 16px;
+        margin: 0;
+        vertical-align: top;
+        outline: 0;
+        box-shadow: none;
+        border-radius: 10px 0 0 10px;
+        border: 2px solid #c4c7ce;
+        background: #fff;
+        color: #222;
+        overflow: hidden;width: 480px !important;
+        padding-right: 48px !important
+    }
+    #bd {
+        cursor: pointer;
+        width: 108px;
+        height: 44px;
+        line-height: 45px;
+        padding: 0;
+        background: 0 0;
+        background-color: #4e6ef2;
+        border-radius: 0 10px 10px 0;
+        font-size: 17px;
+        color: #fff;
+        box-shadow: none;
+        font-weight: 400;
+        border: none;
+        outline: 0;
+    }
+    #c {
+        margin-top: -28px;
+        background: #fff url(https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/searchbox/nicon-10750f3f7d.png) no-repeat;
+        background-position-x: 0%;
+        background-position-y: -48px;
+        width: 24px;
+        height: 20px;
+        z-index: 1;
+        position: absolute;
+        right: 570px;
+        top: 195px;
+    }
+    .bdrb-title {
+        height: 24px;
+        width: 100%;
+        margin-bottom: 4px;
+    }     
+    .bdrb {
+        font: 14px/24px Arial,sans-serif;
+        float: left;
+        margin-left: 440px;
+        height: 24px;
+    }
+    .bdrb-hyh {
+        cursor: pointer;
+        font: 13px/23px Arial,sans-serif;
+        color:  #9195a3;
+        margin-top: 57px;
+    }
+    .bdrb-hyh:hover {
+        color: #315efb;
+    }
+    .secation {
+        position: absolute;
+        left: 406px;
+        top: 290px;
+    }
+    .dis {
+        color: #000;
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        width: 268px;
+        margin-right: 59px;
+    }   
+    .dis_l {
+        list-style: none;
+        font: 14px/24px Arial,sans-serif;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-decoration: none;
+        color: #000;
+        float: left;
+        height: 32px;
+        line-height: 32px;
+        width: 100%;
+    } 
+    .dis_r {
+        color: #000;
+        font-size: 12px;
+        list-style: none;
+        width: 268px;
+        float: left;
+        margin-left: 59px;
+        text-align: right;
+        position: relative;
+        left: 300px;
+        top: -100px;
+    }
+    .rs_z:hover {
+        color: #4e6ef2;
+    }
+    .xh1 {
+        list-style: none;
+        font: 14px/24px Arial,sans-serif;
+        white-space: nowrap;
+        line-height: 32px;
+        display: inline-block;
+        background: 0 0;
+        width: 18px;
+        font-size: 15px;
+        letter-spacing: -1px;
+        color: #fe2d46;
+        margin-right: 2px;
+    }
+    .xh2 {
+        list-style: none;
+        font: 14px/24px Arial,sans-serif;
+        white-space: nowrap;
+        line-height: 32px;
+        display: inline-block;
+        background: 0 0;
+        width: 18px;
+        font-size: 15px;
+        letter-spacing: -1px;
+        color: #f60;
+        margin-right: 2px;
+    }
+    .xh3 {
+        list-style: none;
+        font: 14px/24px Arial,sans-serif;
+        white-space: nowrap;
+        line-height: 32px;
+        display: inline-block;
+        background: 0 0;
+        width: 18px;
+        font-size: 15px;
+        letter-spacing: -1px;
+        color: #faa90e;
+        margin-right: 2px;
+    }
+    .xh {
+        list-style: none;
+        font: 14px/24px Arial,sans-serif;
+        white-space: nowrap;
+        line-height: 32px;
+        display: inline-block;
+        background: 0 0;
+        color: #9195a3;
+        width: 18px;
+        font-size: 15px;
+        letter-spacing: -1px;
+        margin-right: 2px;
+    }
+    .rs_z {
+        list-style: none;
+        font: 14px/24px Arial,sans-serif;
+        white-space: nowrap;
+        color: #626675;
+        line-height: 32px;
+    }
+    .footster {
+        color: #000;
+        font-size: 12px;
+        list-style: none;
+        width: 100%;
+        min-width: 1250px;
+        position: fixed;
+        z-index: 302;
+        bottom: 0;
+        left: 0;
+        height: 40px;
+        overflow: hidden;
+        zoom: 1;
+        margin: 0;
+        background-color: #fbfbfb;
+        text-align: left;
+        line-height: 40px;
+    }
+    .ft_l {
+        float: left;
+    }
+    .ft_r {
+        font-size: 12px;
+        float: right;
+        color: #bbb;
+    }
+    .ll {
+        margin-left: 24px;
+        display: inline;
+        margin-right: -9px;
+    }
+    .lld {
+        display: inline;
+        margin-right: 20px;
+        margin-left: 24px;
+    }
+    .color {
+        font-size: 12px;
+        text-decoration: none;
+        color: #9195a3;
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="top">
+    <div id="left">
+        <a class="l" href="http://news.baidu.com">新闻</a>
+        <a class="l" href="http://www.hao123.com">hao123</a>
+        <a class="l" href="http://map.baidu.com">地图</a>
+        <a class="l" href="http://haokan.baidu.com/?sfrom=baidu-top">视频</a>
+        <a class="l" href="https://tieba.baidu.com">贴吧</a>
+        <a class="l" href="http://xueshu.baidu.com">学术</a>
+        <a class="l" href="">更多</a>
+    </div>
+    <div id="right">
+        <a class="r" href="#">设置</a>
+        <a class="d" href="#">登录</a>
+    </div>
+    </div>
+</header>
+<main>
+    <div class="main">
+        <div >
+            <img class="img-list" src="PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt="百度"  width="270" height="129" >
+        </div>
+        <div >
+            <input class="search" type="text"><div id="c" ></div><span id="bbb"><button id="bd">百度一下</button></span>
+        </div>
+    </div>
+    <div class="bdrb-title">
+        <div class="bdrb">百度热榜</div>  <div class="bdrb-hyh">换一换</div>
+    </div>
+    <div class="secation">
+        <ul class="dis">
+            <li class="dis_l">
+                <a class="rs" href="#"></a>
+                <span class="xh1">1</span><span class="rs_z">特朗普记者会谈“下届政府是谁”</span>
+            </li>
+            <li class="dis_l">
+                <a class="rs" href="#"></a>
+                <span class="xh2">2</span><span class="rs_z">济南进口冷冻食品新冠检测阳性</span>
+            </li>
+            <li class="dis_l">
+                <a class="rs" href="#"></a>
+                <span class="xh3">3</span><span class="rs_z">美媒预测拜登在佐治亚州取胜</span>
+            </li>
+            <li class="dis_r">
+                <a class="rs" href="#"></a>
+                <span class="xh">4</span><span class="rs_z">婴儿泳池溺水获救家长索赔150万</span>
+            </li>
+            <li class="dis_r">
+                <a class="rs" href="#"></a>
+                <span class="xh">5</span><span class="rs_z">康巴汉子拍摄者回应丁真走红</span>
+            </li>
+            <li class="dis_r">
+                <a class="rs" href="#"></a>
+                <span class="xh">6</span><span class="rs_z">英国一连环杀手感染新冠后死亡</span>
+            </li>
+        </ul>
+    </div>
+</main>
+<footer>
+<div class="footster">
+    <div class="ft_l">
+        <p class="ll">
+          <a class="color" href="//www.baidu.com/cache/setindex/index.html">设为首页</a></p>
+        <p class="ll">
+          <a class="color" href="//home.baidu.com">关于百度</a></p>
+        <p class="ll">
+          <a class="color" href="http://ir.baidu.com">About Baidu</a></p>
+        <p class="ll">
+          <a class="color" href="https://isite.baidu.com/site/e.baidu.com/d38e8023-2131-4904-adf7-a8d1108f51ef?refer=888">百度营销</a></p>
+        <p class="ll">
+          <a class="color" href="//www.baidu.com/duty">使用百度前必读</a></p>
+        <p class="ll">
+          <a class="color" href="//help.baidu.com/newadd?prod_id=1&category=4">意见反馈</a></p>
+        <p class="lld">
+          <a class="color" href="//help.baidu.com">帮助中心</a></p>
+    </div>
+    <div class="ft_r">
+        <span class="ll">©2020 Baidu</span>
+        <span class="ll">(京)-经营性-2017-0020</span>
+        <span class="ll">京公网安备11000002000001号</span>
+        <span class="lld">京ICP证030173号</span>
+    </div>
+</div>
+</footer>
+</body>
+</html>
